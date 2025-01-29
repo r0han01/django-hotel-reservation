@@ -1,0 +1,36 @@
+# Virtual Environment
+myenv/
+
+# Python Bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment Variables
+.env
+
+# Django Migrations Cache
+migrations/__pycache__/
+
+# SQLite Database
+db.sqlite3
+db.sqlite3-journal
+
+# Static and Media Files
+/staticfiles/
+/media/
+
+# Logs
+*.log
+debug.log
+
+# IDE and Editor Files
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Compiled and Cache Files
+*.swp
+.DS_Store
+Thumbs.db

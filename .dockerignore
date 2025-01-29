@@ -1,0 +1,31 @@
+# Ignore the virtual environment
+myenv/
+
+# Ignore pycache and other Python-specific files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore local Django settings
+*.log
+*.sqlite3
+
+# Ignore media and static files (unless they are part of the project setup)
+media/
+static/
+
+# Ignore Django migrations
+userform/migrations/
+
+# Ignore IDE/editor files
+.vscode/
+.idea/
+
+# Ignore environment configuration files (e.g., local secrets, .env files)
+.env
+*.env
+
+# Ignore Dockerfile and Docker Compose configuration (if you don't want them in the image)
+docker-compose.yml
+Dockerfile

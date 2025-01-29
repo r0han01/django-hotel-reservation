@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking Form</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            font-size: 12px;
+            line-height: 1.4;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://www.fairfieldhollister.com/images/jqg_1518992315-0.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            position: relative;
+            z-index: 0;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            /* Adjust opacity here for dimming */
+            z-index: -1;
+            /* Keep the overlay behind all content */
+        }
+
+        .container {
+            width: 95%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* Two columns for Guest Details & Room/Stay Details */
+            gap: 20px;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            text-transform: capitalize;
+        }
+
+        h2 {
+            grid-column: 1 / -1;
+            text-align: center;
+            font-size: 2.0rem;
+            font-weight: bold;
+            color: #ff0000;
+            margin-bottom: -30px;
+            letter-spacing: 1px;
+        }
+
+        .subheading {
+            grid-column: 1 / -1;
+            text-align: center;
+            font-size: 1rem;
+            margin-bottom: 5px;
+            color: #555;
+            font-style: italic;
+        }
+
+        fieldset {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* Two columns inside each fieldset */
+            gap: 10px;
+            border: none;
+            padding: 15px;
+            background-color: #fafafa;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+            /* Spanning the full width in the grid container */
+        }
+
+        legend {
+            grid-column: 1 / -1;
+            /* Legend spans the entire width */
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ff0000;
+            margin-bottom: 10px;
+        }
+
+        label {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 8px;
+            font-size: 0.9rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .submit-button-container {
+            grid-column: 1 / -1;
+            /* Center button across the entire layout */
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .submit-button {
+            display: inline-block;
+            background-color: #af4c4c;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .submit-button:hover {
+            background-color: #45a049;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                /* Single column layout for smaller screens */
+            }
+
+            fieldset {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Fairfield Inn - Your Perfect Stay Awaits</h2>
+        <p class="subheading">Reserve your stay now and experience luxury like never before!!</p>
+
+        <!-- Guest Details Section -->
+        <fieldset>
+            <legend>Guest Details</legend>
+            <div>
+                <label for="first_name">First Name:</label>
+                <input type="text" id="first_name" name="first_name" placeholder="Enter first name" required>
+            </div>
+            <div>
+                <label for="last_name">Last Name:</label>
+                <input type="text" id="last_name" name="last_name" placeholder="Enter last name" required>
+            </div>
+            <div>
+                <label for="country">Country:</label>
+                <input type="text" id="country" name="country" value="US" disabled>
+            </div>
+            <div>
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" placeholder="Enter your address" required>
+            </div>
+            <div>
+                <label for="city">City/Region:</label>
+                <input type="text" id="city" name="city" placeholder="Enter city/region" required>
+            </div>
+            <div>
+                <label for="state">State/Province:</label>
+                <input type="text" id="state" name="state" placeholder="Enter state/province" required>
+            </div>
+            <div>
+                <label for="postal_code">Postal Code:</label>
+                <input type="text" id="postal_code" name="postal_code" placeholder="Enter postal code" required>
+            </div>
+            <div>
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter email address" required>
+            </div>
+        </fieldset>
+
+        <!-- Room/Stay Details Section -->
+        <fieldset>
+            <legend>Room/Stay Details</legend>
+            <div>
+                <label for="arrival_date">Arrival Date:</label>
+                <input type="date" id="arrival_date" name="arrival_date" required>
+            </div>
+            <div>
+                <label for="departure_date">Departure Date:</label>
+                <input type="date" id="departure_date" name="departure_date" required>
+            </div>
+            <div>
+                <label for="nights"># of Nights:</label>
+                <input type="number" id="nights" name="nights" value="1" min="1" required>
+            </div>
+            <div>
+                <label for="rooms"># of Rooms:</label>
+                <input type="number" id="rooms" name="rooms" value="1" min="1" required>
+            </div>
+            <div>
+                <label for="arrival_time">Arrival Time:</label>
+                <input type="time" id="arrival_time" name="arrival_time" required>
+            </div>
+            <div>
+                <label for="departure_time">Departure Time:</label>
+                <input type="time" id="departure_time" name="departure_time" value="11:00" required>
+            </div>
+            <div>
+                <label for="room_type">Room Type:</label>
+                <select id="room_type" name="room_type" required>
+                    <option value="king_bed">King Bed</option>
+                    <option value="double_bed">Double Bed</option>
+                </select>
+            </div>
+        </fieldset>
+
+        <!-- Account Details Section -->
+        <fieldset class="full-width">
+            <legend>Account Details</legend>
+            <label for="payment_type">Payment Type:</label>
+            <select id="payment_type" name="payment_type" required>
+                <option value="ca">Cash</option>
+                <option value="check">Check</option>
+                <option value="credit_card">Credit Card</option>
+            </select>
+        </fieldset>
+
+        <!-- Submit Button -->
+        <div class="submit-button-container">
+            <button class="submit-button" type="submit">Confirm Reservation</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to validate the form fields
+        function validateForm() {
+            const formFields = document.querySelectorAll("input[required], select[required]"); // Select all required input and select elements
+            let isValid = true;
+
+            formFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.style.border = "2px solid red"; // Highlight empty fields with a red border
+                } else {
+                    field.style.border = "1px solid #ddd"; // Reset the border to default if field is filled
+                }
+            });
+
+            return isValid; // Return whether all fields are filled
+        }
+
+        // Show error popup if required fields are empty
+        function showErrorPopup() {
+            // Create the error pop-up container
+            const popup = document.createElement('div');
+            popup.style.position = 'fixed';
+            popup.style.top = '50%';
+            popup.style.left = '50%';
+            popup.style.transform = 'translate(-50%, -50%)';
+            popup.style.width = '80%';
+            popup.style.maxWidth = '400px';
+            popup.style.padding = '20px';
+            popup.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+            popup.style.color = '#333';
+            popup.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+            popup.style.borderRadius = '8px';
+            popup.style.textAlign = 'center';
+            popup.style.zIndex = '1000';
+
+            // Add content to the pop-up
+            const message = document.createElement('p');
+            message.textContent = "❗ Please fill in all required fields!";
+            message.style.fontSize = '1.2rem';
+            message.style.marginBottom = '15px';
+            popup.appendChild(message);
+
+            // Add a closing button to the popup
+            const closeButton = document.createElement('button');
+            closeButton.textContent = 'Close';
+            closeButton.style.padding = '10px 20px';
+            closeButton.style.backgroundColor = '#ff0000';
+            closeButton.style.color = 'white';
+            closeButton.style.fontSize = '1rem';
+            closeButton.style.border = 'none';
+            closeButton.style.borderRadius = '5px';
+            closeButton.style.cursor = 'pointer';
+            closeButton.style.marginTop = '10px';
+            popup.appendChild(closeButton);
+
+            // Close the pop-up when the button is clicked
+            closeButton.addEventListener('click', () => {
+                document.body.removeChild(popup);
+            });
+
+            // Append the pop-up to the body
+            document.body.appendChild(popup);
+        }
+
+        // Show confirmation popup
+        function showConfirmationPopup() {
+            // Validate the form
+            if (!validateForm()) {
+                showErrorPopup(); // Show error popup if fields are not filled
+                return; // If validation fails, don't show the confirmation popup
+            }
+
+            // Create the confirmation pop-up container
+            const popup = document.createElement('div');
+            popup.style.position = 'fixed';
+            popup.style.top = '50%';
+            popup.style.left = '50%';
+            popup.style.transform = 'translate(-50%, -50%)';
+            popup.style.width = '80%';
+            popup.style.maxWidth = '400px';
+            popup.style.padding = '20px';
+            popup.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+            popup.style.color = '#333';
+            popup.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+            popup.style.borderRadius = '8px';
+            popup.style.textAlign = 'center';
+            popup.style.zIndex = '1000';
+
+            // Add content to the pop-up
+            const message = document.createElement('p');
+            message.textContent = "🎉 Your reservation has been confirmed! We look forward to welcoming you to Fairfield Inn!";
+            message.style.fontSize = '1.2rem';
+            message.style.marginBottom = '15px';
+            popup.appendChild(message);
+
+            // Add a closing animation effect
+            const spinner = document.createElement('div');
+            spinner.style.margin = 'auto';
+            spinner.style.border = '4px solid #ddd';
+            spinner.style.borderTop = '4px solid #ff0000';
+            spinner.style.borderRadius = '50%';
+            spinner.style.width = '40px';
+            spinner.style.height = '40px';
+            spinner.style.animation = 'spin 1s linear infinite';
+            popup.appendChild(spinner);
+
+            // Keyframes for spinner animation
+            const styleSheet = document.createElement('style');
+            styleSheet.type = 'text/css';
+            styleSheet.innerText = `
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    `;
+            document.head.appendChild(styleSheet);
+
+            // Append the pop-up to the body
+            document.body.appendChild(popup);
+
+            // Redirect after 5 seconds
+            setTimeout(() => {
+                document.body.removeChild(popup);
+                window.location.href = "/reservation"; // Replace with your actual homepage URL
+            }, 5000);
+        }
+
+        // Attach the function to the form submission
+        document.querySelector('.submit-button').addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent the form from actually submitting
+            showConfirmationPopup();
+        });
+
+    </script>
+</body>
+
+</html>
